@@ -1,13 +1,510 @@
+<!DOCTYPE html>
 <html lang="de">
 <head>
-...
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Lucifer Ruhrpott | FC 26 Clips</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
+}
+
+body{
+font-family:'Orbitron',sans-serif;
+background:#050505;
+color:white;
+overflow-x:hidden;
+}
+
+body::before{
+content:'';
+position:fixed;
+width:100%;
+height:100%;
+background:
+radial-gradient(circle at top,#ffd00020,transparent 30%),
+radial-gradient(circle at bottom,#ff000020,transparent 40%);
+z-index:-1;
+}
+
+#bg-video{
+position:fixed;
+right:0;
+bottom:0;
+min-width:100%;
+min-height:100%;
+object-fit:cover;
+z-index:-2;
+opacity:0.15;
+}
+
+nav{
+position:fixed;
+top:0;
+width:100%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px;
+background:#00000090;
+backdrop-filter:blur(10px);
+z-index:1000;
+}
+
+.logo{
+font-size:1.5rem;
+font-weight:bold;
+color:#ffd000;
+}
+
+.menu-toggle{
+font-size:2rem;
+cursor:pointer;
+color:#ffd000;
+}
+
+#mobileMenu{
+display:none;
+position:absolute;
+top:70px;
+right:20px;
+background:#111;
+border-radius:15px;
+padding:20px;
+list-style:none;
+}
+
+#mobileMenu.active{
+display:block;
+}
+
+#mobileMenu li{
+margin:10px 0;
+}
+
+#mobileMenu a{
+color:white;
+text-decoration:none;
+}
+
+header{
+width:100%;
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:20px;
+}
+
+.hero{
+max-width:900px;
+}
+
+@keyframes neonGlow {
+
+0%{
+text-shadow:0 0 10px #ffd000;
+}
+
+50%{
+text-shadow:
+0 0 20px #ffd000,
+0 0 40px #ffd000,
+0 0 80px #ff8800;
+}
+
+100%{
+text-shadow:0 0 10px #ffd000;
+}
+
+}
+
+.hero h1{
+font-size:5rem;
+color:#ffd000;
+animation:neonGlow 2s infinite;
+margin-bottom:20px;
+}
+
+.hero p{
+font-size:1.2rem;
+color:#ccc;
+margin-bottom:35px;
+}
+
+.hero-buttons{
+display:flex;
+gap:20px;
+justify-content:center;
+flex-wrap:wrap;
+}
+
+.btn{
+padding:15px 35px;
+border:none;
+border-radius:12px;
+background:#ffd000;
+color:black;
+font-weight:bold;
+text-decoration:none;
+transition:0.3s;
+box-shadow:0 0 15px #ffd00080;
+}
+
+.btn:hover{
+transform:translateY(-5px);
+box-shadow:0 0 25px #ffd000;
+}
+
+section{
+padding:80px 10%;
+}
+
+.section-title{
+font-size:2.5rem;
+margin-bottom:50px;
+color:#ffd000;
+text-align:center;
+}
+
+.clips-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:30px;
+}
+
+.clip-card{
+background:#111;
+border:1px solid #222;
+border-radius:20px;
+overflow:hidden;
+transition:0.3s;
+box-shadow:0 0 20px #000;
+}
+
+.clip-card:hover{
+transform:translateY(-10px);
+border-color:#ffd000;
+box-shadow:0 0 20px #ffd00040;
+}
+
+.clip-card iframe{
+width:100%;
+height:220px;
+}
+
+.clip-info{
+padding:20px;
+}
+
+.clip-info h3{
+margin-bottom:10px;
+color:#ffd000;
+}
+
+.fc-card{
+width:250px;
+height:350px;
+background:linear-gradient(145deg,#111,#222);
+border:2px solid #ffd000;
+border-radius:25px;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+margin:auto;
+box-shadow:0 0 30px #ffd00050;
+transition:0.3s;
+}
+
+.fc-card:hover{
+transform:scale(1.05);
+box-shadow:0 0 50px #ffd000;
+}
+
+.fc-card h2{
+font-size:4rem;
+color:#ffd000;
+}
+
+.tiktok-feed{
+display:flex;
+gap:20px;
+overflow-x:auto;
+scroll-snap-type:x mandatory;
+padding:20px;
+}
+
+.video-card{
+min-width:320px;
+scroll-snap-align:center;
+border-radius:20px;
+overflow:hidden;
+background:#111;
+}
+
+.video-card video{
+width:100%;
+}
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:20px;
+}
+
+.gallery img{
+width:100%;
+border-radius:20px;
+transition:0.3s;
+}
+
+.gallery img:hover{
+transform:scale(1.03);
+}
+
+footer{
+padding:40px 20px;
+text-align:center;
+background:#050505;
+border-top:1px solid #222;
+}
+
+.socials{
+display:flex;
+justify-content:center;
+gap:20px;
+margin-top:20px;
+flex-wrap:wrap;
+}
+
+.socials a{
+color:#ffd000;
+text-decoration:none;
+}
+
+@media(max-width:768px){
+
+.hero h1{
+font-size:3rem;
+}
+
+.section-title{
+font-size:2rem;
+}
+
+}
+
+</style>
 </head>
 
 <body>
 
 <video autoplay muted loop id="bg-video">
-  <source src="background.mp4" type="video/mp4">
+<source src="background.mp4" type="video/mp4">
 </video>
 
+<nav>
+
+<div class="logo">
+LUCIFER
+</div>
+
+<div class="menu-toggle" onclick="toggleMenu()">
+☰
+</div>
+
+<ul id="mobileMenu">
+<li><a href="#clips">Clips</a></li>
+<li><a href="#cards">FC Cards</a></li>
+<li><a href="#discord">Discord</a></li>
+</ul>
+
+</nav>
+
 <header>
-...
+
+<div class="hero">
+
+<h1>LUCIFER RUHRPOTT</h1>
+
+<p>
+FC 26 Highlights • Pro Gameplay • Rage Moments • Weekend League
+</p>
+
+<div class="hero-buttons">
+
+<a href="#clips" class="btn">
+TOP CLIPS
+</a>
+
+<a href="https://twitch.tv/" target="_blank" class="btn">
+TWITCH
+</a>
+
+</div>
+
+</div>
+
+</header>
+
+<section id="clips">
+
+<h2 class="section-title">
+TOP FC 26 CLIPS
+</h2>
+
+<div class="clips-grid">
+
+<div class="clip-card">
+
+<iframe
+src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+frameborder="0"
+allowfullscreen>
+</iframe>
+
+<div class="clip-info">
+<h3>90' Winner ⚽</h3>
+<p>Last Minute Goal in Weekend League.</p>
+</div>
+
+</div>
+
+<div class="clip-card">
+
+<iframe
+src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+frameborder="0"
+allowfullscreen>
+</iframe>
+
+<div class="clip-info">
+<h3>Insane Skill Move 🔥</h3>
+<p>Top Corner Finish & Clean Dribbling.</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="cards">
+
+<h2 class="section-title">
+FC 26 PLAYER CARD
+</h2>
+
+<div class="fc-card">
+
+<h2>92</h2>
+
+<h3>MBAPPÉ</h3>
+
+<p>ST</p>
+
+</div>
+
+</section>
+
+<section>
+
+<h2 class="section-title">
+TIKTOK STYLE FEED
+</h2>
+
+<div class="tiktok-feed">
+
+<div class="video-card">
+<video controls>
+<source src="clip1.mp4" type="video/mp4">
+</video>
+</div>
+
+<div class="video-card">
+<video controls>
+<source src="clip2.mp4" type="video/mp4">
+</video>
+</div>
+
+</div>
+
+</section>
+
+<section id="discord">
+
+<h2 class="section-title">
+DISCORD COMMUNITY
+</h2>
+
+<div style="text-align:center;">
+
+<a class="btn"
+href="https://discord.gg/"
+target="_blank">
+
+JOIN DISCORD
+
+</a>
+
+</div>
+
+</section>
+
+<section>
+
+<h2 class="section-title">
+HIGHLIGHT GALLERY
+</h2>
+
+<div class="gallery">
+
+<img src="highlight1.jpg">
+<img src="highlight2.jpg">
+<img src="highlight3.jpg">
+
+</div>
+
+</section>
+
+<footer>
+
+<h2>
+Follow Lucifer Ruhrpott
+</h2>
+
+<div class="socials">
+
+<a href="#">Twitch</a>
+<a href="#">YouTube</a>
+<a href="#">TikTok</a>
+<a href="#">Discord</a>
+
+</div>
+
+<p style="margin-top:30px;color:#777;">
+© 2026 Lucifer Ruhrpott | FC 26 Website
+</p>
+
+</footer>
+
+<script>
+
+function toggleMenu(){
+document.getElementById('mobileMenu').classList.toggle('active');
+}
+
+</script>
+
+</body>
+</html>
