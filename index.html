@@ -16,7 +16,7 @@
         <div class="profile-ring">
           <img
             class="profile-image"
-            src="data:image/gif;base64,R0lGODlhAQABAAAAACw="
+            src="assets/mephisto-wolf-profile-small.jpg"
             alt="YouTube Profilbild von mephisto_Wolf"
           />
         </div>
@@ -24,16 +24,14 @@
         <div class="hero-copy">
           <p class="eyebrow">Gaming | Musik | Live</p>
           <h1 id="site-title">mephisto_Wolf</h1>
-          <p class="intro">
-            Dunkle Vibes, rote Akzente und Content rund um Gaming, Streams und Musik.
-          </p>
+          <p class="intro">Hier gibt es Content rund um Gaming, Streams und Musik.</p>
 
           <div class="actions" aria-label="Social Links">
             <a class="button primary" href="https://www.youtube.com/@mephisto_wolf7360" target="_blank" rel="noreferrer">
               YouTube Kanal
             </a>
             <a class="button secondary" href="https://www.twitch.tv/mephisto_wolf" target="_blank" rel="noreferrer">
-              Twitch Stream
+              Twitch Kanal
             </a>
           </div>
         </div>
@@ -47,20 +45,10 @@
         </article>
         <article>
           <span class="label">Musik</span>
-          <h2>Sound fuer lange Naechte</h2>
+          <h2>Sound für lange nächte</h2>
           <p>Musik, Atmosphaere und Energie treffen auf einen Look, der direkt zu mephisto_Wolf passt.</p>
         </article>
       </section>
     </main>
-    <script>
-      fetch("assets/profile-small-base64.txt")
-        .then((response) => (response.ok ? response.text() : ""))
-        .then((base64) => {
-          if (base64) {
-            document.querySelector(".profile-image").src = `data:image/jpeg;base64,${base64}`;
-          }
-        })
-        .catch(() => {});
-    </script>
   </body>
 </html>
